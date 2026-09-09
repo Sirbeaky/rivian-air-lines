@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=Special+Elite&display=swap');
+
+:root{
+  --ink:#17140f;
+  --paper:#ede7d8;
+  --paper-alt:#e1d8c0;
+  --spruce:#24413b;
+  --spruce-dark:#182e29;
+  --rust:#a6512e;
+  --brass:#c89b4a;
+  --line: rgba(23,20,15,0.18);
+  --max: 1100px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Work Sans', sans-serif;
+  font-size:17px;
+  line-height:1.55;
+}
+
+h1,h2,h3{
+  font-family:'Barlow Condensed', sans-serif;
+  font-weight:700;
+  line-height:1.05;
+  margin:0 0 .4em;
+  letter-spacing:.2px;
+}
+h1{font-size:clamp(2.4rem,6vw,4.2rem);}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);}
+h3{font-size:1.35rem;font-weight:600;}
+
+p{margin:0 0 1em; max-width:62ch;}
+
+a{color:var(--rust);}
+a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-offset:3px;}
+
+.mono{
+  font-family:'Special Elite', monospace;
+  letter-spacing:.02em;
+}
+
+.wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+/* ---------- header / nav ---------- */
+header.site{
+  position:sticky; top:0; z-index:20;
+  background:var(--paper);
+  border-bottom:3px solid var(--ink);
+}
+header.site .bar{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 28px;
+  max-width:var(--max); margin:0 auto;
+}
+.brand{
+  display:flex; align-items:baseline; gap:10px;
+  text-decoration:none; color:var(--ink);
+}
+.brand .mark{
+  font-family:'Barlow Condensed', sans-serif;
+  font-weight:700; font-size:1.5rem;
+}
+.brand .tag{
+  font-family:'Special Elite', monospace;
+  font-size:.72rem; color:var(--spruce);
+}
+nav.primary{display:flex; gap:2px;}
+nav.primary a{
+  font-family:'Barlow Condensed', sans-serif;
+  font-weight:600; font-size:1.05rem;
+  text-decoration:none; color:var(--ink);
+  padding:8px 14px; border-radius:2px;
+  transition: background .15s ease, color .15s ease;
+}
+nav.primary a:hover{background:var(--paper-alt);}
+nav.primary a.active{
+  background:var(--spruce); color:var(--paper);
+}
+.nav-toggle{display:none;}
+
+@media (max-width:760px){
+  header.site .bar{flex-wrap:wrap; gap:10px;}
+  nav.primary{width:100%; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:10px;}
+}
+
+/* ---------- hero / stamp ---------- */
+.hero{
+  padding:64px 0 56px;
+  border-bottom:1px solid var(--line);
+}
+.hero .grid{
+  display:grid; grid-template-columns:1.4fr .9fr; gap:48px; align-items:end;
+}
+@media (max-width:820px){ .hero .grid{grid-template-columns:1fr;} }
+
+.stamp{
+  border:2px solid var(--ink);
+  padding:18px 20px;
+  position:relative;
+}
+.stamp::before, .stamp::after,
+.stamp .c2::before, .stamp .c2::after{
+  content:""; position:absolute; width:10px; height:10px;
+  border:2px solid var(--rust);
+}
+.stamp::before{top:-2px; left:-2px; border-right:none; border-bottom:none;}
+.stamp::after{top:-2px; right:-2px; border-left:none; border-bottom:none;}
+.stamp .c2::before{bottom:-2px; left:-2px; border-right:none; border-top:none; position:absolute;}
+.stamp .c2::after{bottom:-2px; right:-2px; border-left:none; border-top:none; position:absolute;}
+
+.stamp dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:6px 14px;}
+.stamp dt{font-family:'Special Elite', monospace; font-size:.78rem; color:var(--spruce); align-self:center;}
+.stamp dd{margin:0; font-family:'Barlow Condensed', sans-serif; font-weight:600; font-size:1.05rem; align-self:center;}
+
+.lede{font-size:1.15rem; max-width:52ch;}
+
+/* ---------- sections ---------- */
+section{padding:56px 0;}
+section + section{border-top:1px solid var(--line);}
+.eyebrow{
+  font-family:'Special Elite', monospace;
+  font-size:.78rem; color:var(--spruce); margin-bottom:8px;
+}
+
+/* ---------- cards ---------- */
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+.grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:28px;}
+@media (max-width:900px){ .grid-3{grid-template-columns:1fr 1fr;} }
+@media (max-width:640px){ .grid-3, .grid-2{grid-template-columns:1fr;} }
+
+.card{
+  border:1px solid var(--ink);
+  background:var(--paper-alt);
+  padding:22px 22px 24px;
+}
+.card .tail{
+  font-family:'Special Elite', monospace;
+  font-size:.85rem; color:var(--rust);
+  display:block; margin-bottom:6px;
+}
+.card .role{
+  display:inline-block; margin-top:10px;
+  font-family:'Special Elite', monospace; font-size:.75rem;
+  padding:3px 8px; border:1px solid var(--ink);
+}
+.card .links{margin-top:14px; display:flex; flex-direction:column; gap:4px;}
+.card .links a{font-family:'Special Elite', monospace; font-size:.82rem;}
+
+/* ---------- table-like stat rows ---------- */
+.manifest{
+  border-top:2px solid var(--ink); border-bottom:2px solid var(--ink);
+}
+.manifest .row{
+  display:grid; grid-template-columns:1fr 2fr;
+  gap:16px; padding:14px 0; border-bottom:1px solid var(--line);
+}
+.manifest .row:last-child{border-bottom:none;}
+.manifest .row dt{
+  font-family:'Special Elite', monospace; font-size:.85rem; color:var(--spruce);
+}
+.manifest .row dd{margin:0; font-weight:500;}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-block;
+  font-family:'Barlow Condensed', sans-serif; font-weight:600; font-size:1.05rem;
+  padding:10px 20px;
+  background:var(--spruce); color:var(--paper);
+  text-decoration:none; border:1px solid var(--spruce);
+}
+.btn:hover{background:var(--spruce-dark);}
+.btn.outline{
+  background:transparent; color:var(--ink); border-color:var(--ink);
+}
+.btn.outline:hover{background:var(--ink); color:var(--paper);}
+
+/* ---------- footer ---------- */
+footer.site{
+  border-top:3px solid var(--ink);
+  padding:32px 0 40px;
+  background:var(--paper-alt);
+}
+footer.site .row{
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;
+  align-items:center;
+}
+footer.site .brand .mark{font-size:1.15rem;}
+footer.site nav a{
+  font-family:'Special Elite', monospace; font-size:.82rem;
+  color:var(--ink); text-decoration:none; margin-left:16px;
+}
+footer.site nav a:first-child{margin-left:0;}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{transition:none !important;}
+}
