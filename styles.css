@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=Special+Elite&display=swap');
 
 :root{
-  --ink:#17140f;
-  --paper:#ede7d8;
-  --paper-alt:#e1d8c0;
-  --spruce:#24413b;
-  --spruce-dark:#182e29;
-  --rust:#a6512e;
-  --brass:#c89b4a;
-  --line: rgba(23,20,15,0.18);
+  --ink:#151515;
+  --paper:#f5f4f0;
+  --paper-alt:#e9e6dc;
+  --spruce:#39613a;      /* Rivian Green */
+  --spruce-dark:#284228;
+  --rust:#ffac00;        /* Rivian Yellow — reserved for CTAs + small accents */
+  --rust-dark:#e69a00;
+  --line: rgba(21,21,21,0.16);
   --max: 1100px;
 }
 
@@ -36,7 +36,7 @@ h3{font-size:1.35rem;font-weight:600;}
 
 p{margin:0 0 1em; max-width:62ch;}
 
-a{color:var(--rust);}
+a{color:var(--spruce);}
 a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-offset:3px;}
 
 .mono{
@@ -138,9 +138,19 @@ section + section{border-top:1px solid var(--line);}
   background:var(--paper-alt);
   padding:22px 22px 24px;
 }
+.card-media{
+  margin:-22px -22px 16px;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-bottom:1px solid var(--ink);
+  background:var(--ink);
+}
+.card-media img{
+  width:100%; height:100%; object-fit:cover; display:block;
+}
 .card .tail{
   font-family:'Special Elite', monospace;
-  font-size:.85rem; color:var(--rust);
+  font-size:.85rem; color:var(--spruce);
   display:block; margin-bottom:6px;
 }
 .card .role{
@@ -170,10 +180,10 @@ section + section{border-top:1px solid var(--line);}
   display:inline-block;
   font-family:'Barlow Condensed', sans-serif; font-weight:600; font-size:1.05rem;
   padding:10px 20px;
-  background:var(--spruce); color:var(--paper);
-  text-decoration:none; border:1px solid var(--spruce);
+  background:var(--rust); color:var(--ink);
+  text-decoration:none; border:1px solid var(--rust);
 }
-.btn:hover{background:var(--spruce-dark);}
+.btn:hover{background:var(--rust-dark); border-color:var(--rust-dark);}
 .btn.outline{
   background:transparent; color:var(--ink); border-color:var(--ink);
 }
